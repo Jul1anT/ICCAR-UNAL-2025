@@ -1,4 +1,3 @@
-*.exe
-*.o
-
-__pycache/
+.vscode
+a.out
+*.x
