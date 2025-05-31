@@ -1,0 +1,57 @@
+# Reporte debugging
+
+## Distribución de Memoria de los Arreglos
+**Arreglo x:**
+- Asignado dinámicamente en el heap mediante new
+- No es contiguo a los otros arreglos
+- Su ubicación en memoria es impredecible
+**Arreglos y y z:**
+- Asignados estáticamente en stack
+- Son contiguos entre sí
+
+## Análisis de Errores y Soluciones
+
+### 1. Problemas de Compilación
+- Faltaba un punto y coma al final de `return std::sqrt(x)`.
+- Error en condición de la función baz: Se utilizó asignación (`=`) en lugar de comparación (`==`) en `if (x = 0)`. Además, había un `return` sin valor de retorno.
+
+### 2. Errores Lógicos y de Ejecución
+- La función `foo` realizaba divisiones sin verificar si los denominadores eran cero: `a/b + b/bar(a, b) + b/a`. Esto causa un error de ejecución cuando `b=0`, `bar(a,b)=0` o `a=0`.
+- Variables `ii` y `jj` declaradas dos veces en el mismo ámbito.
+- **Acceso fuera de límites (out-of-bounds)**: 
+  - En el primer bucle: `x[jj]` en lugar de `x[ii]`
+  - Acceso incorrecto: `print_array(x, NZ)` (usar NZ en lugar de NX)
+  - Acceso incorrecto: `print_array(z, NZ + NY)` (dimensión incorrecta)
+  - Operaciones inválidas: `print_array(x-NY, NY)`, `print_array(y-NZ, NZ)`, `print_array(z + NZ + NY, NX)`. No tiene sentido reescribir está ecuación proque va en la sección de impresión, tendría sentido si fuera en la sección de rellenado del arreglo y luego cambiado su rango 
+
+
+### 3. Problemas de Gestión de Memoria
+- Uso de memoria dinámica innecesaria: `x` se definió como puntero y se reservó memoria con `new` sin un correspondiente `delete`, ocasionando pérdida de memoria.
+
+### 4. Problemas de Diseño y Funcionalidad
+- La variable `kk` se declaró pero nunca se utilizó.
+- La Variable `v` en baz: Se calculaba pero nunca se usaba.
+- Implementación incorrecta en bar; La conversión a `unsigned int` podía causar comportamiento indefinido con valores negativos.
+- El uso de referencia constante (`const int &`) para un tipo básico como `int` no ofrece beneficios y añade complejidad innecesaria.
+
+## Mejoras Implementadas
+
+### 1. Correcciones de Sintaxis y Estructura
+- Se añadió el punto y coma faltante en la función `baz`.
+- Se reorganizó el código con espaciado e indentación adecuada para mejorar la legibilidad.
+- Se eliminaron variables redundantes o no utilizadas.
+
+### 2. Prevención de Errores en Tiempo de Ejecución
+- Se añadieron verificaciones para prevenir divisiones por cero en la función `foo`.
+- Se corrigió la función `baz` para manejar valores negativos (que causarían error al calcular la raíz cuadrada).
+- Se inicializaron todos los arreglos con valores por defecto: `x[NX] = {}`, `y[NY] = {}`, `z[NZ] = {}`.
+
+### 3. Mejora de la Gestión de Memoria
+- Se cambió `x` de puntero dinámico a arreglo estático, evitando posibles fugas de memoria y alineándolo con el uso de `y` y `z`.
+
+### 4. Mejoras en la Interfaz de Usuario
+- Se añadió entrada de usuario para los valores `a` y `b` (antes `ii` y `jj`).
+- Se agregaron mensajes explicativos para algunos errores
+
+### 5. Optimización de Algoritmos
+- Se eliminó código redundante o sin sentido en los bucles del `main`.

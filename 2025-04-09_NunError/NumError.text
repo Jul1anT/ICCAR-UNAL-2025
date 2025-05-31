@@ -1,0 +1,14 @@
+Errores in computación númerica
+
+Hay infinitos números entre 0 y 1 -> por lo tanto se hace una 
+aproximación númera
+
+Overflow -> Ocurre cuando un número llega a su límite menor o mayor y
+da la vuelta, resultando en su opuesto
+
+Diferencia de 32 bits? 64 bits?
+
+Números periodicos no se pueden representar exactamente
+
+
+
