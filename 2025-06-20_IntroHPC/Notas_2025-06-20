@@ -1,0 +1,19 @@
+MPI
+    Dividir un trabajo en diferentes threds y hasta en diferentes maquinas 
+Parallelism in Python
+    Dasks (Python)
+        Crear un cluster logico
+Parrallelism in C++
+
+
+Anuncios
+    - Entrega en Docker (Container) -> Bono
+        Apptainer basados de Docker para Clusters
+    - El profe no asiste las dos penultimas semanas
+
+Tasks:
+    - Buscar bases de MPI
+    - OPENMP
+    - CUDA
+    - Kernel? correr
+    - 

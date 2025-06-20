@@ -7,7 +7,7 @@ plt.errorbar(df['Threads'], df['Mean_WTime(s)'], yerr=df['Sigma_WTime'], label='
 plt.errorbar(df['Threads'], df['Mean_CTime(s)'], yerr=df['Sigma_CTime'], label='CPU Time')
 plt.xlabel('Número de Hilos')
 plt.ylabel('Tiempo (s)')
-plt.title('Escalabilidad LU Factorization')
+plt.title('Time vs size')
 plt.legend()
 plt.grid(True)
 plt.savefig('scaling_plot.png')
