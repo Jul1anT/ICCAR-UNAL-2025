@@ -4,7 +4,7 @@ Parallelism in Python
     Dasks (Python)
         Crear un cluster logico
 Parrallelism in C++
-
+    Correr con srun 
 
 Anuncios
     - Entrega en Docker (Container) -> Bono
@@ -16,4 +16,5 @@ Tasks:
     - OPENMP
     - CUDA
     - Kernel? correr
-    - 
+    - Grupo logico
+    - Manejador de recursos

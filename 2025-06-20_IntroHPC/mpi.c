@@ -3,6 +3,7 @@
 
 int main(int argc, char** argv)
 {
+    int rank, size;
     // Initialize the MPI environment
     MPI_Init(&argc, &argv);
 
@@ -25,4 +26,20 @@ int main(int argc, char** argv)
 
     // Finalize the MPI environment.
     MPI_Finalize();
+}
+
+int main(int argc, char *argv[])
+{
+ 
+    MPI_Send(&rank //referencia al vector de elementos a enviar
+    		,1 // tamaño del vector a enviar
+    		,MPI_INT // Tipo de dato que envias
+    		,rank+1 // pid del proceso destino
+    		,0 //etiqueta
+    		,MPI_COMM_WORLD); //Comunicador por el que se manda
+    .
+    .
+    .
+    MPI_Finalize();
+    return 0;
 }
